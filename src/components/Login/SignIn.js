@@ -57,6 +57,7 @@ export default function SignIn() {
         var token = result.credential.accessToken;
         // The signed-in user info.
         var user = result.user;
+        window.location.pathname = "/home";
         console.log(user);
         // ...
       })
@@ -87,6 +88,7 @@ export default function SignIn() {
         .auth()
         .signInWithEmailAndPassword(user.email, user.password)
         .then((result) => {
+          window.location.pathname = "/home";
           console.log(result.user);
         })
         .catch((error) => {
