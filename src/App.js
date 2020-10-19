@@ -5,9 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./components/Home/Home";
 import NavBar from "./components/NavBar/NavBar";
 import { AuthContextProvider } from "./components/useAuth/useAuth";
-// import SignUp from './components/SignUp/SignUp';
-// import PlaceOrder from './components/PlaceOrder/PlaceOrder';
-// import Tracking from './components/Tracking/Tracking';
+import SignUp from "./components/Login/SignUp";
 
 function App() {
   return (
@@ -19,15 +17,9 @@ function App() {
             <Route path="/home">
               <Home></Home>
             </Route>
-            {/* <Route path="/signup">
-            <SignUp></SignUp>
-          </Route>
-          <Route path="/order">
-            <PlaceOrder></PlaceOrder>
-          </Route>
-          <Route path="/tracking">
-            <Tracking></Tracking>
-          </Route> */}
+            <Route path="/signup">
+              <SignUp></SignUp>
+            </Route>
             <Route exact path="/">
               <Home></Home>
             </Route>

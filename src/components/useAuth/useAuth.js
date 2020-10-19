@@ -43,7 +43,20 @@ const Auth = () => {
         return err.message;
       });
   };
-
+  const signOut = () => {
+    return firebase
+      .auth()
+      .signOut()
+      .then(function () {
+        setUser(null);
+        return true;
+        // Sign-out successful.
+      })
+      .catch(function (error) {
+        return false;
+        // An error happened.
+      });
+  };
   useEffect(() => {
     firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
@@ -56,6 +69,7 @@ const Auth = () => {
   return {
     signInWithGoogle,
     user,
+    signOut,
   };
 };
 export default Auth;
