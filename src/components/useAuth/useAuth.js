@@ -6,6 +6,7 @@ import { createContext } from "react";
 import { useContext } from "react";
 import { useEffect } from "react";
 import firebaseConfig from "../../firebase.config";
+import { Redirect, Route } from "react-router-dom";
 
 firebase.initializeApp(firebaseConfig);
 
@@ -17,6 +18,26 @@ export const AuthContextProvider = (props) => {
   );
 };
 export const useAuth = () => useContext(AuthContext);
+export const PrivateRoute = ({ children, ...rest }) => {
+  const auth = useAuth();
+  return (
+    <Route
+      {...rest}
+      render={({ location }) =>
+        auth.user ? (
+          children
+        ) : (
+          <Redirect
+            to={{
+              pathname: "/signup",
+              state: { from: location },
+            }}
+          />
+        )
+      }
+    />
+  );
+};
 
 const getUser = (user) => {
   const { displayName, email, photoURL } = user;
