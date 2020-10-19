@@ -6,6 +6,7 @@ import Home from "./components/Home/Home";
 import NavBar from "./components/NavBar/NavBar";
 import { AuthContextProvider } from "./components/useAuth/useAuth";
 import SignUp from "./components/Login/SignUp";
+import SignIn from "./components/Login/SignIn";
 
 function App() {
   return (
@@ -19,6 +20,9 @@ function App() {
             </Route>
             <Route path="/signup">
               <SignUp></SignUp>
+            </Route>
+            <Route path="/signIn">
+              <SignIn></SignIn>
             </Route>
             <Route exact path="/">
               <Home></Home>
