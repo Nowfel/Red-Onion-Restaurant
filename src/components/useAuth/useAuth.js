@@ -2,10 +2,21 @@ import React from "react";
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import { useState } from "react";
+import { createContext } from "react";
+import { useContext } from "react";
 import { useEffect } from "react";
 import firebaseConfig from "../../firebase.config";
 
 firebase.initializeApp(firebaseConfig);
+
+const AuthContext = createContext();
+export const AuthContextProvider = (props) => {
+  const auth = Auth();
+  return (
+    <AuthContext.Provider value={auth}>{props.children}</AuthContext.Provider>
+  );
+};
+export const useAuth = () => useContext(AuthContext);
 
 const getUser = (user) => {
   const { displayName, email, photoURL } = user;
