@@ -7,6 +7,7 @@ import NavBar from "./components/NavBar/NavBar";
 import { AuthContextProvider } from "./components/useAuth/useAuth";
 import SignUp from "./components/Login/SignUp";
 import SignIn from "./components/Login/SignIn";
+import PlaceOrder from "./components/PlaceOrder/PlaceOrder";
 
 function App() {
   return (
@@ -17,6 +18,9 @@ function App() {
           <Switch>
             <Route path="/home">
               <Home></Home>
+            </Route>
+            <Route path="/order">
+              <PlaceOrder></PlaceOrder>
             </Route>
             <Route path="/signup">
               <SignUp></SignUp>

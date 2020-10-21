@@ -39,17 +39,17 @@ const useStyles = makeStyles((theme) => ({
 export default function SignUp() {
   const classes = useStyles();
   const auth = useAuth();
-  console.log(auth.signInWithGoogle);
+ 
+  
   const [user, setUser] = React.useState({
     isSignedIn: false,
     name: "",
     email: "",
     password: "",
     photo: "",
-    firstName: "",
-    lastName: "",
+   
   });
-
+  console.log(auth.user);
   const handleChange = (e) => {
     const newUser = { ...user };
     newUser[e.target.name] = e.target.value;
@@ -70,7 +70,7 @@ export default function SignUp() {
         .createUserWithEmailAndPassword(user.email, user.password)
         .then((result) => {
           console.log(result);
-          window.location.pathname = "/home";
+          // window.location.pathname = "/home";
         })
         .catch((error) => {
           var errorCode = error.code;
@@ -98,106 +98,123 @@ export default function SignUp() {
       });
   };
   return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Sign up
-        </Typography>
-        <form className={classes.form} Validate onSubmit={handleSubmit}>
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                autoComplete="fname"
-                name="firstName"
-                variant="outlined"
-                required
-                fullWidth
-                id="firstName"
-                label="First Name"
-                autoFocus
-                onChange={handleChange}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
-                onChange={handleChange}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-                onChange={handleChange}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                onChange={handleChange}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
-              />
-            </Grid>
-          </Grid>
-          {user.error && (
-            <Typography variant="h6" color="error">
-              {user.error}
+    <div>
+      {!auth.user && (
+        <Container component="main" maxWidth="xs">
+          <CssBaseline />
+          <div className={classes.paper}>
+            <Avatar className={classes.avatar}>
+              <LockOutlinedIcon />  
+            </Avatar>
+            <Typography component="h1" variant="h5">
+              Sign up
             </Typography>
-          )}
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Sign Up
-          </Button>
-          <Button
-            fullWidth
-            variant="contained"
-            color="primary"
-            onClick={handleSignInWithGoogle}
-          >
-            Sign In With Google
-          </Button>
-          <Grid container justify="flex-end">
-            <Grid item>
-              <Link href="/signIn" variant="body2">
-                Already have an account? Sign in
-              </Link>
-            </Grid>
-          </Grid>
-        </form>
-      </div>
-      <Box mt={5}></Box>
-    </Container>
+            <form className={classes.form} Validate onSubmit={handleSubmit}>
+              <Grid container spacing={2}>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    autoComplete="fname"
+                    name="firstName"
+                    variant="outlined"
+                    required
+                    fullWidth
+                    id="firstName"
+                    label="First Name"
+                    autoFocus
+                    onChange={handleChange}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    variant="outlined"
+                    required
+                    fullWidth
+                    id="lastName"
+                    label="Last Name"
+                    name="lastName"
+                    autoComplete="lname"
+                    onChange={handleChange}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    variant="outlined"
+                    required
+                    fullWidth
+                    id="email"
+                    label="Email Address"
+                    name="email"
+                    autoComplete="email"
+                    onChange={handleChange}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    variant="outlined"
+                    required
+                    fullWidth
+                    name="password"
+                    label="Password"
+                    type="password"
+                    id="password"
+                    autoComplete="current-password"
+                    onChange={handleChange}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <FormControlLabel
+                    control={
+                      <Checkbox value="allowExtraEmails" color="primary" />
+                    }
+                    label="I want to receive inspiration, marketing promotions and updates via email."
+                  />
+                </Grid>
+              </Grid>
+              {user.error && (
+                <Typography variant="h6" color="error">
+                  {user.error}
+                </Typography>
+              )}
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+              >
+                Sign Up
+              </Button>
+              <Button
+                fullWidth
+                variant="contained"
+                color="primary"
+                onClick={handleSignInWithGoogle}
+              >
+                Sign In With Google
+              </Button>
+              <Grid container justify="flex-end">
+                <Grid item>
+                  <Link href="/signIn" variant="body2">
+                    Already have an account? Sign in
+                  </Link>
+                </Grid>
+              </Grid>
+            </form>
+          </div>
+          <Box mt={5}></Box>
+          <br />
+        </Container>
+      )}
+      {auth.user && (
+        <a className="btn btn-success" href="/">
+          Order More
+        </a>
+      )}
+      {auth.user && (
+        <a className="btn btn-danger" href="/order">
+          Place Order
+        </a>
+      )}
+    </div>
   );
 }
