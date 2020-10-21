@@ -1,4 +1,5 @@
 import React from "react";
+import logo from "../../resources/logo2.png";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -39,15 +40,13 @@ const useStyles = makeStyles((theme) => ({
 export default function SignUp() {
   const classes = useStyles();
   const auth = useAuth();
- 
-  
+
   const [user, setUser] = React.useState({
     isSignedIn: false,
     name: "",
     email: "",
     password: "",
     photo: "",
-   
   });
   console.log(auth.user);
   const handleChange = (e) => {
@@ -99,12 +98,13 @@ export default function SignUp() {
   };
   return (
     <div>
+      
       {!auth.user && (
         <Container component="main" maxWidth="xs">
           <CssBaseline />
           <div className={classes.paper}>
             <Avatar className={classes.avatar}>
-              <LockOutlinedIcon />  
+              <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
               Sign up
@@ -206,12 +206,12 @@ export default function SignUp() {
         </Container>
       )}
       {auth.user && (
-        <a className="btn btn-success" href="/">
+        <a style={{ margin: "50px" }} className="btn btn-success" href="/">
           Order More
         </a>
       )}
       {auth.user && (
-        <a className="btn btn-danger" href="/order">
+        <a style={{ margin: "50px" }} className="btn btn-danger" href="/order">
           Place Order
         </a>
       )}

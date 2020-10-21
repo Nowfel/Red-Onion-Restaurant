@@ -5,6 +5,7 @@ import "./Address.css";
 const Address = (props) => {
   const auth = useAuth();
   const {name,email} = auth;
+  console.log({name,email});
 
   return (
     <div className="address-form">
