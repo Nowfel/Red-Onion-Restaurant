@@ -8,6 +8,7 @@ import { AuthContextProvider } from "./components/useAuth/useAuth";
 import SignUp from "./components/Login/SignUp";
 import SignIn from "./components/Login/SignIn";
 import PlaceOrder from "./components/PlaceOrder/PlaceOrder";
+import Tracking from "./components/Tracking/Tracking";
 
 function App() {
   return (
@@ -21,6 +22,9 @@ function App() {
             </Route>
             <Route path="/order">
               <PlaceOrder></PlaceOrder>
+            </Route>
+            <Route path="/tracking">
+              <Tracking></Tracking>
             </Route>
             <Route path="/signup">
               <SignUp></SignUp>

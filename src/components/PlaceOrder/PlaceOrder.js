@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Cart from "../Cart/Cart";
 import Address from "../Address/Address";
+import { Link } from 'react-router-dom';
 
 const PlaceOrder = () => {
     
@@ -35,6 +36,9 @@ const PlaceOrder = () => {
             formComplete={formComplete}
             deliveryDetails={deliveryDetails}
           ></Cart>
+          <Link to='/tracking'>
+                <button className="btn btn-danger">Track Order</button>
+          </Link>
         </div>
       </div>
     </div>
