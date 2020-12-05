@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "../../resources/logo2.png";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -72,12 +71,10 @@ export default function SignUp() {
           // window.location.pathname = "/home";
         })
         .catch((error) => {
-          var errorCode = error.code;
-          var errorMessage = error.message;
           const newInfo = { ...user };
           newInfo.error = error.message;
           setUser(newInfo);
-          updateUser(user.firstName);
+          // updateUser(user.firstName);
           console.log(error.message);
         });
     }
@@ -98,7 +95,6 @@ export default function SignUp() {
   };
   return (
     <div>
-      
       {!auth.user && (
         <Container component="main" maxWidth="xs">
           <CssBaseline />

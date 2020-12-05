@@ -3,7 +3,6 @@ import CartItem from "../CartItem/CartItem";
 import "./Cart.css";
 
 const Cart = (props) => {
-
   const [showPrice, setShowPrice] = useState(true);
   const [cart, setCart] = useState([]);
 
@@ -56,7 +55,6 @@ const Cart = (props) => {
             );
           })
         : ""}
-
     </div>
   );
 };

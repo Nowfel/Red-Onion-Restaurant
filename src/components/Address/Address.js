@@ -4,8 +4,7 @@ import "./Address.css";
 
 const Address = (props) => {
   const auth = useAuth();
-  const {name,email} = auth;
-  console.log({name,email});
+  const { name, email } = auth;
 
   return (
     <div className="address-form">
@@ -16,18 +15,8 @@ const Address = (props) => {
           name="title"
           value="Edit Delivery Detail"
         />
-        <input
-          type="text"
-          name="name"
-          value={name}
-          placeholder="Name"
-        />
-        <input
-          type="text"
-          name="email"
-          value={email}
-          placeholder="Email"
-        />
+        <input type="text" name="name" value={name} placeholder="Name" />
+        <input type="text" name="email" value={email} placeholder="Email" />
         <textarea
           className="address-field"
           rows="5"
